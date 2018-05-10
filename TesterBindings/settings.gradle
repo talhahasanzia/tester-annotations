@@ -1,1 +1,1 @@
-include ':app', ':TestableBinding'
+include ':app', ':expose.annotation', ':expose.processor'
