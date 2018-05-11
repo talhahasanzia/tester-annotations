@@ -15,8 +15,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Presenter presenter = new Presenter();
-
-
+        
     }
 
 

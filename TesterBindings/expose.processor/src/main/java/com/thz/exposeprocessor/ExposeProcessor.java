@@ -71,39 +71,31 @@ public class ExposeProcessor extends AbstractProcessor {
             TypeElement typeElement = (TypeElement) element;
             PackageElement pkg = elementUtils.getPackageOf(element);
 
-            activitiesWithPackage.put(
-                    typeElement.getSimpleName().toString(),
+
+
+            TypeSpec.Builder generatedClass = generateClass( element, typeElement.getSimpleName().toString(),
                     pkg.getQualifiedName().toString());
 
 
+            try {
+                JavaFile.builder("com.thz.annotationdemo", generatedClass.build()).build().writeTo(filer);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
         }
 
-        TypeSpec.Builder navigatorClass = generateClass();
-
-        try {
-            JavaFile.builder("com.thz.annotationdemo", navigatorClass.build()).build().writeTo(filer);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
 
         return true;
     }
 
 
-    private TypeSpec.Builder generateClass() {
-        /*TypeSpec.Builder navigatorClass = TypeSpec
-                .classBuilder("NavigatorNew")
-                .addModifiers(Modifier.PUBLIC, Modifier.FINAL);
-*/
+    private TypeSpec.Builder generateClass( Element element, String activityName, String packageName) {
 
-        TypeSpec.Builder navigatorClass=null;
 
-        for (Map.Entry<String, String> element : activitiesWithPackage.entrySet()) {
-
-            String activityName = element.getKey();
-            String packageName = element.getValue();
-             navigatorClass = TypeSpec
+        TypeSpec.Builder generatedClass= TypeSpec
                     .classBuilder(activityName+"Exposed")
                     .addModifiers(Modifier.PUBLIC, Modifier.FINAL);
 
@@ -116,11 +108,11 @@ public class ExposeProcessor extends AbstractProcessor {
                     .addParameter(classContext, "context")
                     .addStatement("return new $T($L, $L)", classIntent, "context", activityClass + ".class")
                     .build();
-            navigatorClass.addMethod(intentMethod);
-        }
+            generatedClass.addMethod(intentMethod);
+
 
         System.out.println("class created");
-        return navigatorClass;
+        return generatedClass;
     }
 
 

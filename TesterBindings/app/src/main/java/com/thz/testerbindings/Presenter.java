@@ -18,6 +18,7 @@ public class Presenter {
 
     private int square(int n)
     {
+
         return n*n;
     }
 

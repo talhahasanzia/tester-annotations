@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://C:\Users\VD\Documents\AndroidProjects\tester-annotations\TesterBindings\expose.annotation\TestableBinding.iml" filepath="C:\Users\VD\Documents\AndroidProjects\tester-annotations\TesterBindings\expose.annotation\TestableBinding.iml" />
       <module fileurl="file://$PROJECT_DIR$/TesterBindings.iml" filepath="$PROJECT_DIR$/TesterBindings.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/expose.annotation/TestableBinding.iml" filepath="$PROJECT_DIR$/expose.annotation/TestableBinding.iml" />
+      <module fileurl="file://$PROJECT_DIR$/expose.annotation/expose.annotation.iml" filepath="$PROJECT_DIR$/expose.annotation/expose.annotation.iml" />
       <module fileurl="file://$PROJECT_DIR$/expose.processor/expose.processor.iml" filepath="$PROJECT_DIR$/expose.processor/expose.processor.iml" />
     </modules>
   </component>
